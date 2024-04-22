@@ -63,6 +63,46 @@
     </div>
 
     <!-- JS -->
+    <script>
+        document.getElementById("register-form").addEventListener("signup", function(event) {
+            // Ngăn chặn hành động mặc định của form (không gửi request)
+            event.preventDefault();
+            
+            // Lấy các giá trị từ các trường input
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var studentId = document.getElementById("student-id").value;
+            var password = document.getElementById("pass").value;
+            var confirmPassword = document.getElementById("re_pass").value;
+        
+            // Tạo một object chứa dữ liệu
+            var data = {
+                name: name,
+                email: email,
+                studentId: studentId,
+                password: password,
+                confirmPassword: confirmPassword
+            };
+        
+            // Gửi request POST đến endpoint /register trên server
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+                // Xử lý kết quả trả về từ server
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Xử lý lỗi nếu có
+            });
+        });
+    </script>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/main.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
