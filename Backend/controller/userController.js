@@ -22,16 +22,6 @@ exports.registerUser = async (req, res) => {
     try {
         const { fullname, username, email, phone, studentId, password, repass } = req.body;
 
-        // Kết nối với database
-        const UserDB = mongoose.model('users', {
-            fullname: String,
-            username: String,
-            email: String,
-            phone: String,
-            studentId: String,
-            password: String
-          });
-
         if(password != repass) {
             res.status(400).json({ success: false, message: 'Mật khẩu không trùng khớp!' });
             return;
