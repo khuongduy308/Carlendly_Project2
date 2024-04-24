@@ -1,18 +1,21 @@
-// App.js
 import React from 'react';
-import Routes from 'react-router-dom';
-import Login from './login';
-import Register from './register';
-import Homepage from './homepage';
+import { useState } from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom'; 
+
+// Import các component
+import Homepage from "./pages/homepage";
+import Login from "./pages/login";
+import Register from "./pages/register";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Homepage />} /> 
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </Router>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </BrowserRouter>
   );
 }
 
